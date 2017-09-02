@@ -1,0 +1,17 @@
+.header {
+  color: #424242;
+  background: #fff;
+  height: 62px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+
+  &__page-title {
+    height: 62px;
+    display: flex;
+    align-items: center;
+    float: left;
+  }
+}

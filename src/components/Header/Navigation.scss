@@ -1,0 +1,130 @@
+.navigation {
+  position: relative;
+  height: 62px;
+  float: right;
+  display: flex;
+  align-items: center;
+
+  &__links {
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+
+    &--non-mobile {
+      position: initial;
+      margin: 0;
+
+      li {
+        list-style: none;
+        display: inline-block;
+
+        a {
+          padding: 0 10px;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  &__hamburger {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    height: 48px;
+    padding: 12px;
+    user-select: none;
+    width: 48px;
+  }
+}
+
+.sidebar {
+  right: -100%;
+  transition: all .5s;
+
+  &--open {
+    right: 0;
+
+    .sidebar__content {
+      right: 0;
+      transition: all .5s;
+    }
+
+    .sidebar__overlay {
+      top: 0;
+      opacity: 1;
+      transition: all ease .5s;
+    }
+  }
+
+  &__overlay {
+    opacity: 0;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 62;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transition: all ease .5s;
+  }
+
+  &__header {
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  &__content {
+    background: #fff;
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    min-width: 250px;
+    right: -80%;
+    max-width: 300px;
+    bottom: 0;
+    transition: all 0.5s;
+  }
+
+  &__nav {
+    list-style: none;
+    padding: 0;
+
+    li {
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+
+    a {
+      color: #666;
+      width: 100%;
+      vertical-align: middle;
+      padding-left: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 14px;
+    }
+  }
+}
+
+.nav-icon {
+  width: 20px;
+  height: 22px;
+  font-size: 16px;
+  color: #666;
+}
+
+.nav-text {
+  position: relative;
+  left: 6px;
+}

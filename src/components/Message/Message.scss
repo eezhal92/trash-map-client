@@ -1,0 +1,16 @@
+.message {
+  padding: 80px 20px;
+  margin-top: 120px;
+  text-align: center;
+  color: #8E8E93;
+
+  &__text {
+    font-size: 18px;
+    margin-bottom: 15px;
+
+    &--secondary {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+  }
+}
