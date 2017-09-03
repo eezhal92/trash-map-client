@@ -12,14 +12,19 @@ class SubmissionForm extends Component {
 
   state = {
     submitting: false,
+    buttonText: 'Kirim Laporan',
+  };
+
+  retrievingLocation = () => {
+    this.setState(() => ({ submitting: true, buttonText: 'Mengambil Lokasi Anda...' }));
   };
 
   submitting = () => {
-    this.setState(() => ({ submitting: true }));
+    this.setState(() => ({ submitting: true, buttonText: 'Mengirim...' }));
   };
 
   submitted = () => {
-    this.setState(() => ({ submitting: false }));
+    this.setState(() => ({ submitting: false, buttonText: 'Kirim Laporan' }));
   };
 
   sendTrashCoordinate = data => fetch(`${process.env.ENDPOINT_BASE_URL}/api/trashes`, {
@@ -39,7 +44,7 @@ class SubmissionForm extends Component {
 
   submit = (event) => {
     event.preventDefault();
-    this.submitting();
+    this.retrievingLocation();
 
     if (!this.props.photo) {
       return;
@@ -51,6 +56,8 @@ class SubmissionForm extends Component {
       payload.append('latitude', position.coords.latitude);
       payload.append('longitude', position.coords.longitude);
       payload.append('photo', this.props.photo);
+
+      this.submitting();
 
       this.sendTrashCoordinate(payload)
         .then(() => {
@@ -64,7 +71,7 @@ class SubmissionForm extends Component {
   };
 
   render() {
-    const { submitting } = this.state;
+    const { buttonText, submitting } = this.state;
 
     return (
       <div class="bottom-actions submission-form">
@@ -73,7 +80,7 @@ class SubmissionForm extends Component {
             <div class="col-xs-12">
               <div>
                 <button disabled={submitting} onClick={this.submit} class="btn btn-block btn--ios">
-                  {submitting ? 'Mengirim...' : 'Kirim Laporan' }
+                  {buttonText}
                 </button>
               </div>
             </div>

@@ -2,6 +2,7 @@ import { any } from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
+import ImageCompressor from 'image-compressor';
 import { SubmissionForm, FileInput, Message } from '../components';
 
 class Snap extends Component {
@@ -35,14 +36,26 @@ class Snap extends Component {
 
     if (!photoFile) return;
 
-    const reader = new FileReader();
+    // eslint-disable-next-line no-new
+    const compressor = new ImageCompressor();
 
-    reader.onload = (event) => {
-      this.photoFile = photoFile;
-      this.setState(() => ({ imageDataUrl: event.target.result }));
-    };
+    compressor.compress(photoFile, {
+      quality: 0.5,
+    })
+      .then((compressedImage) => {
+        const reader = new FileReader();
 
-    reader.readAsDataURL(photoFile);
+        reader.onload = (event) => {
+          this.photoFile = compressedImage;
+          this.setState(() => ({ imageDataUrl: event.target.result }));
+        };
+
+        reader.readAsDataURL(compressedImage);
+      })
+      .catch((err) => {
+        // eslint-disable-next-line
+        alert(err.message);
+      });
   };
 
   listenPhotoInputChange = () => {
