@@ -9,7 +9,9 @@ import { getTrashCoordinates } from 'app/actions/trash';
 
 class TrashImages extends Component {
   componentDidMount() {
-    this.props.getTrashCoordinates();
+    if (!this.props.fetched) {
+      this.props.getTrashCoordinates();
+    }
   }
 
   render() {

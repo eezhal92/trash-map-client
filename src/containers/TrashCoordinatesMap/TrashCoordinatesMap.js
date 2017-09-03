@@ -1,7 +1,7 @@
 /* global google */
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { any, object, array, func, oneOfType } from 'prop-types';
+import { any, object, array, func, oneOfType, bool } from 'prop-types';
 
 import { setLocation } from 'app/actions/location';
 import { TrashHeatMap, Message } from 'app/components';
@@ -49,7 +49,9 @@ class TrashCoordinatesMap extends Component {
 
     navigator.geolocation.getCurrentPosition(successCb, errorCb, options);
 
-    this.props.getTrashCoordinates();
+    if (!this.props.trashCoordinatesFetched) {
+      this.props.getTrashCoordinates();
+    }
   }
 
   reload = () => window.location.reload();
@@ -106,10 +108,12 @@ TrashCoordinatesMap.propTypes = {
   location: oneOfType([any, object]),
   trashCoordinates: array.isRequired,
   getTrashCoordinates: func.isRequired,
+  trashCoordinatesFetched: bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   location: state.location,
+  trashCoordinatesFetched: state.trash.fetched,
   trashCoordinates: state.trash.coordinates,
 });
 
