@@ -17,9 +17,6 @@ const About = () => (
               Aplikasi ini dikembangkan untuk menampung data tentang titik pembuangan sampah liar
               &nbsp;maupun tempat yang sangat kotor akibat sampah.
             </p>
-            <p>Dikembangkan oleh &nbsp;
-              <a href="https://twitter.com/eezhal92" rel="noopener noreferrer" target="_blank">eezhal92</a>
-            </p>
             <p>
               <a class="github-button" href="https://github.com/eezhal92/trash-map-api" data-icon="octicon-star" data-show-count="true" aria-label="Star eezhal92/trash-map-api on GitHub">Star</a>
               &nbsp;

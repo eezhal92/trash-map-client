@@ -10,6 +10,13 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?localIdentName=[hash:base64]&modules',
+        }),
+      },
+      {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',

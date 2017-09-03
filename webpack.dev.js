@@ -20,6 +20,10 @@ module.exports = merge(common, {
         loader: 'eslint-loader',
       },
       {
+        test: /\.css$/,
+        loader: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.(scss|sass)$/,
         loader: ['style-loader', 'css-loader', 'sass-loader'],
       },
