@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { any, object, array, func, oneOfType } from 'prop-types';
 
-import { setLocation } from '../../actions/location';
-import { TrashHeatMap, Message } from '../../components';
-import { getTrashCoordinates } from '../../actions/trash';
+import { setLocation } from 'app/actions/location';
+import { TrashHeatMap, Message } from 'app/components';
+import { getTrashCoordinates } from 'app/actions/trash';
 
 class TrashCoordinatesMap extends Component {
   constructor(props) {

@@ -4,8 +4,8 @@ import chunk from 'lodash/chunk';
 import { connect } from 'react-redux';
 import { array, bool, func } from 'prop-types';
 
-import { Message, ImageCard } from '../../components';
-import { getTrashCoordinates } from '../../actions/trash';
+import { Message, ImageCard } from 'app/components';
+import { getTrashCoordinates } from 'app/actions/trash';
 
 class TrashImages extends Component {
   componentDidMount() {

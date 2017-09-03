@@ -8,8 +8,6 @@ const configureStore = (initialState = {}) => {
     applyMiddleware(thunk),
   ];
 
-  console.log(process.env.NODE_ENV);
-
   if (process.env.NODE_ENV === 'development') {
     enhancers.push(
       window.devToolsExtension ? window.devToolsExtension() : f => f,
