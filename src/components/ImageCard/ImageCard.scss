@@ -1,4 +1,14 @@
 .image-card {
+  margin: 20px 0;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, .16);
+  border-radius: 4px;
+
+  &__info {
+    padding: 20px 15px;
+    font-size: 12;
+    color: #666;
+  }
+
   &__lazy-card-wrapper {
     height: 220px;
     background: #eee;
