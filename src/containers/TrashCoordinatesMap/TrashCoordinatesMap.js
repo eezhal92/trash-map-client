@@ -1,11 +1,11 @@
 /* global google */
-import fetch from 'isomorphic-fetch';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { any, object, array, func, oneOfType } from 'prop-types';
 
+import { setLocation } from '../../actions/location';
 import { TrashHeatMap, Message } from '../../components';
-import { receiveTrashCoordinates, setLocation } from '../../actions';
+import { getTrashCoordinates } from '../../actions/trash';
 
 class TrashCoordinatesMap extends Component {
   constructor(props) {
@@ -49,21 +49,8 @@ class TrashCoordinatesMap extends Component {
 
     navigator.geolocation.getCurrentPosition(successCb, errorCb, options);
 
-    this.getTrashCoordinates();
+    this.props.getTrashCoordinates();
   }
-
-  getTrashCoordinates = () => fetch(`${process.env.ENDPOINT_BASE_URL}/api/trashes`)
-    .then(res => res.json())
-    .then((data) => {
-      if (!Array.isArray(data)) {
-        return [];
-      }
-
-      return data;
-    })
-    .then((data) => {
-      this.props.receiveTrashCoordinates(data);
-    });
 
   reload = () => window.location.reload();
 
@@ -118,17 +105,17 @@ TrashCoordinatesMap.propTypes = {
   setLocation: func.isRequired,
   location: oneOfType([any, object]),
   trashCoordinates: array.isRequired,
-  receiveTrashCoordinates: func.isRequired,
+  getTrashCoordinates: func.isRequired,
 };
 
 const mapStateToProps = state => ({
   location: state.location,
-  trashCoordinates: state.trashCoordinates,
+  trashCoordinates: state.trash.coordinates,
 });
 
 const mapDispatchToProps = ({
   setLocation,
-  receiveTrashCoordinates,
+  getTrashCoordinates,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrashCoordinatesMap);

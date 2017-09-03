@@ -1,9 +1,14 @@
-import { createStore, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { createStore, compose, applyMiddleware } from 'redux';
 
-import rootReducer from './reducer';
+import rootReducer from './reducers';
 
 const configureStore = (initialState = {}) => {
-  const enhancers = [];
+  const enhancers = [
+    applyMiddleware(thunk),
+  ];
+
+  console.log(process.env.NODE_ENV);
 
   if (process.env.NODE_ENV === 'development') {
     enhancers.push(
@@ -14,9 +19,9 @@ const configureStore = (initialState = {}) => {
   const store = createStore(rootReducer, initialState, compose(...enhancers));
 
   if (module.hot) {
-    module.hot.accept('./reducer', () => {
+    module.hot.accept('./reducers', () => {
       /* eslint-disable global-require */
-      const nextReducer = require('./reducer').default;
+      const nextReducer = require('./reducers').default;
 
       store.replaceReducer(nextReducer);
     });
