@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { Message } from '../components';
 
+const reportLink = <Link class="btn btn--outline" to="/report">Lihat Laporan</Link>;
+
 const Submitted = () => (
   <div class="submitted-page">
     <Helmet>
@@ -15,6 +17,7 @@ const Submitted = () => (
           <Message
             text="Terima Kasih"
             subText="Kontribusi Anda telah disimpan"
+            action={reportLink}
           />
         </div>
       </div>

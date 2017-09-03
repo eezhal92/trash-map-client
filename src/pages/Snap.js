@@ -3,7 +3,9 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import ImageCompressor from 'image-compressor';
-import { SubmissionForm, FileInput, Message } from '../components';
+
+import { SubmissionForm } from '../containers';
+import { FileInput, Message } from '../components';
 
 class Snap extends Component {
   constructor(props) {

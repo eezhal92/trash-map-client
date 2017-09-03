@@ -9,7 +9,10 @@ const initialState = {
 export default function trash(state = initialState, action) {
   switch (action.type) {
     case types.ADD_TRASH_COORDINATE:
-      return { ...state, coordinates: state.trashCoordinates.concat(action.trashCoordinate) };
+      return {
+        ...state,
+        coordinates: [action.trashCoordinate, ...state.coordinates],
+      };
     case types.RECEIVE_TRASH_COORDINATES:
       return { ...state, coordinates: action.trashCoordinates, fetched: true };
     case types.FETCHING_TRASH_COORDINATES:
