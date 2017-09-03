@@ -13,7 +13,7 @@ module.exports = merge(common, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: 'css-loader?localIdentName=[hash:base64]&modules',
+          use: 'css-loader',
         }),
       },
       {
