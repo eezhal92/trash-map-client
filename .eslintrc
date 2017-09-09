@@ -2,11 +2,12 @@
   "extends": "airbnb",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest/globals": true
   },
   "parser": "babel-eslint",
   "plugins": [
-    "import", "jsx-a11y", "react"
+    "import", "jsx-a11y", "react", "jest"
   ],
   "rules": {
     "react/forbid-prop-types": "off",
