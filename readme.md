@@ -1,5 +1,7 @@
 # Trash Map Client
 
+[![CircleCI](https://circleci.com/gh/eezhal92/trash-map-client.svg?style=svg)](https://circleci.com/gh/eezhal92/trash-map-client)
+
 ## Requirements
 * Node >= 6.9
 * Yarn
