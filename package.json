@@ -10,7 +10,7 @@
   "scripts": {
     "start": "NODE_ENV=production node server",
     "dev": "webpack-dev-server --config webpack.dev",
-    "test": "jest --verbose",
+    "test": "jest --verbose --coverage",
     "build": "NODE_ENV=production webpack --optimize-minimize --config webpack.prod",
     "postinstall": "npm run build"
   },

@@ -8,7 +8,7 @@ import { TrashCoordinatesMap } from '../containers';
 const Home = () => (
   <div class="home-page">
     <Helmet>
-      <title>Beranda</title>
+      <title>Berandal</title>
     </Helmet>
     <Header title="Peta persebaran sampah" />
     <TrashCoordinatesMap />
