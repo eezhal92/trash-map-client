@@ -1,3 +1,12 @@
 html, body {
   font-family: 'Roboto', sans-serif;
 }
+
+a {
+  color: #2196f3;
+
+  &:hover, &:focus {
+    color: lighten(#2196f3, 0.2%);
+    text-decoration: none;
+  }
+}
