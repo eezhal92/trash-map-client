@@ -6,7 +6,7 @@ import { TrashImages } from '../containers';
 
 const Report = () => (
   <div class="report-page" style={{ paddingTop: 62 }}>
-    <Header title="Laporan Terbaru" />
+    <Header title="Laporan terbaru" />
     <div class="container">
       <TrashImages />
     </div>

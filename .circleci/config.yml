@@ -35,7 +35,7 @@ jobs:
 
       - run:
           command: |
-            git push heroku master:master
+            git push heroku master:master --force
             sleep 5 # sleep for 5 seconds to wait for dynos
             heroku restart
 workflows:

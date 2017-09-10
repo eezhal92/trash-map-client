@@ -123,7 +123,7 @@ class Snap extends Component {
               <div class="bottom-actions">
                 <div class="container">
                   <div class="row">
-                    <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+                    <div class="col-xs-12">
                       <FileInput id="photo-input" />
                     </div>
                   </div>

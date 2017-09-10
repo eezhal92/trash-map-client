@@ -10,7 +10,7 @@ const Home = () => (
     <Helmet>
       <title>Beranda</title>
     </Helmet>
-    <Header title="Peta Persebaran Sampah" />
+    <Header title="Peta persebaran sampah" />
     <TrashCoordinatesMap />
     <div class="bottom-actions">
       <div class="container">
