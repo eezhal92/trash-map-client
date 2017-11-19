@@ -7,6 +7,13 @@ import { array, bool, func } from 'prop-types';
 import { Message, ImageCard } from 'app/components';
 import { getTrashCoordinates } from 'app/actions/trash';
 
+const markNotAppropriate = () =>
+  Promise.resolve()
+    .then(() => {
+      // eslint-disable-next-line no-alert
+      window.alert('Terima kasih atas laporannya');
+    });
+
 class TrashImages extends Component {
   componentDidMount() {
     if (!this.props.fetched) {
@@ -44,7 +51,11 @@ class TrashImages extends Component {
         {group.map(coordinates => (
           <div class="row" key={`${Date.now}-${Math.random()}`}>
             {coordinates.map(coordinate => (
-              <ImageCard key={coordinate._id} coordinate={coordinate} />
+              <ImageCard
+                key={coordinate._id}
+                markNotAppropriate={markNotAppropriate}
+                coordinate={coordinate}
+              />
             ))}
           </div>
         ))}
