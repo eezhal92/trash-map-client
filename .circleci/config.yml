@@ -3,7 +3,7 @@ version: 2.0
 jobs:
   build:
     docker:
-      - image: circleci/node:6.11.3
+      - image: circleci/node:8.9
     working_directory: ~/trash-map-client
     steps:
       - checkout

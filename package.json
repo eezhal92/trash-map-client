@@ -4,8 +4,7 @@
   "author": "arkinthesky.69@gmail.com",
   "version": "0.1.0",
   "engines": {
-    "node": "6.9.1",
-    "yarn": "0.20.3"
+    "node": "8.9"
   },
   "scripts": {
     "start": "NODE_ENV=production node server",
