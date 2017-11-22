@@ -39,6 +39,7 @@ class Navigation extends Component {
             </div>
             <ul class="sidebar__nav">
               <li><Link to="/"><i class="glyphicon glyphicon-home nav-icon" /> <span class="nav-text">Beranda</span></Link></li>
+              <li><Link to="/tps"><i class="glyphicon glyphicon-trash nav-icon" /> <span class="nav-text">Titik TPS</span></Link></li>
               <li><Link to="/report"><i class="glyphicon glyphicon-camera nav-icon" /> <span class="nav-text">Laporan Terbaru</span></Link></li>
               <li><Link to="/about"><i class="glyphicon glyphicon-book nav-icon" /> <span class="nav-text">Tentang</span></Link></li>
               <li><Link to="/stats"><i class="glyphicon glyphicon-equalizer nav-icon" /> <span class="nav-text">Statistik &amp; Visualisasi Data</span></Link></li>
@@ -47,6 +48,7 @@ class Navigation extends Component {
         </div>
         <ul class="hidden-xs navigation__links--non-mobile">
           <li><Link to="/">Beranda</Link></li>
+          <li><Link to="/tps">Titik TPS</Link></li>
           <li><Link to="/report">Laporan Terbaru</Link></li>
           <li><Link to="/about">Tentang</Link></li>
         </ul>

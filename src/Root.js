@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 import Home from './pages/Home';
+import TPS from './pages/TPS';
 import Snap from './pages/Snap';
 import About from './pages/About';
 import Stats from './pages/Stats';
@@ -16,6 +17,7 @@ export default function Root() {
     <Router>
       <div class="root">
         <Route exact path="/" component={Home} />
+        <Route path="/tps" component={TPS} />
         <Route path="/snap" component={Snap} />
         <Route path="/submitted" component={Submitted} />
         <Route path="/report" component={Report} />
