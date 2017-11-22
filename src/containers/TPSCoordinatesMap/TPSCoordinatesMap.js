@@ -1,26 +1,16 @@
 import React from 'react';
-import fetch from 'isomorphic-fetch';
 import { TPSMarkerMap } from 'app/components';
+
+const tps = [
+  { id: 1, latitude: -0.926737, longitude: 119.903979 },
+  { id: 2, latitude: -0.919705, longitude: 119.897713 },
+  { id: 3, latitude: -0.919115, longitude: 119.886855 },
+];
 
 export default class TPSCoordinatesMap extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { markers: [] };
-  }
-
-  componentDidMount() {
-    const url = [
-      // Length issue
-      'https://gist.githubusercontent.com',
-      '/farrrr/dfda7dd7fccfec5474d3',
-      '/raw/758852bbc1979f6c4522ab4e92d1c92cba8fb0dc/data.json',
-    ].join('');
-
-    fetch(url)
-      .then(res => res.json())
-      .then((data) => {
-        this.setState({ markers: data.photos });
-      });
+    this.state = { markers: tps };
   }
 
   render() {

@@ -20,7 +20,7 @@ class Navigation extends Component {
 
     return (
       <nav class="navigation">
-        <div role="button" aria-label="menu" tabIndex="0" class="navigation__hamburger hidden-lg hidden-md hidden-sm show-xs" onClick={this.toggleSidebar}>
+        <div role="button" aria-label="menu" tabIndex="0" class="navigation__hamburger hidden-lg hidden-md show-sm show-xs" onClick={this.toggleSidebar}>
           <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 0h24v24H0z" fill="none" />
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
@@ -42,15 +42,16 @@ class Navigation extends Component {
               <li><Link to="/tps"><i class="glyphicon glyphicon-trash nav-icon" /> <span class="nav-text">Titik TPS</span></Link></li>
               <li><Link to="/report"><i class="glyphicon glyphicon-camera nav-icon" /> <span class="nav-text">Laporan Terbaru</span></Link></li>
               <li><Link to="/about"><i class="glyphicon glyphicon-book nav-icon" /> <span class="nav-text">Tentang</span></Link></li>
-              <li><Link to="/stats"><i class="glyphicon glyphicon-equalizer nav-icon" /> <span class="nav-text">Statistik &amp; Visualisasi Data</span></Link></li>
+              <li><Link to="/stats"><i class="glyphicon glyphicon-equalizer nav-icon" /> <span class="nav-text">Statistik</span></Link></li>
             </ul>
           </div>
         </div>
-        <ul class="hidden-xs navigation__links--non-mobile">
+        <ul class="hidden-xs hidden-sm navigation__links--non-mobile">
           <li><Link to="/">Beranda</Link></li>
           <li><Link to="/tps">Titik TPS</Link></li>
           <li><Link to="/report">Laporan Terbaru</Link></li>
           <li><Link to="/about">Tentang</Link></li>
+          <li><Link to="/stats">Statistik</Link></li>
         </ul>
       </nav>
     );

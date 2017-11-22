@@ -40,5 +40,6 @@ module.exports = merge(common, {
   output: {
     filename: '[name].bundle.js',
     path: resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
 });

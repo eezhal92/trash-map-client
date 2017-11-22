@@ -1,0 +1,32 @@
+.tabs {
+  background: #fff;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    padding: 15px 10px;
+    flex-grow: 1;
+    flex-basis: 0;
+    text-align: center;
+    border-bottom: 2px solid #fff;
+
+    &:focus, &:active {
+      outline: none;
+    }
+  }
+
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  a.tabs__item--active {
+    color: #2196F3;
+  }
+
+  &__item--active {
+    color: #2196F3;
+    border-bottom: 2px solid #2196F3;
+  }
+}

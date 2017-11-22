@@ -10,8 +10,8 @@ import { MarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerC
 
 const TPSMarkerMap = props => (
   <GoogleMap
-    defaultZoom={3}
-    defaultCenter={{ lat: 25.0391667, lng: 121.525 }}
+    defaultZoom={13}
+    defaultCenter={{ lat: -0.907251, lng: 119.868118 }}
   >
     <MarkerClusterer
       onClick={props.onMarkerClustererClick}
@@ -21,7 +21,7 @@ const TPSMarkerMap = props => (
     >
       {props.markers.map(marker => (
         <Marker
-          key={marker.photo_id}
+          key={marker.id}
           position={{ lat: marker.latitude, lng: marker.longitude }}
         />
       ))}
@@ -41,10 +41,8 @@ export default compose(
     mapElement: <div style={{ height: '100vh' }} />,
   }),
   withHandlers({
-    onMarkerClustererClick: () => (markerClusterer) => {
-      const clickedMarkers = markerClusterer.getMarkers();
-      console.log(`Current clicked markers length: ${clickedMarkers.length}`);
-      console.log(clickedMarkers);
+    onMarkerClustererClick: () => () => {
+      // do something
     },
   }),
   withGoogleMap,
