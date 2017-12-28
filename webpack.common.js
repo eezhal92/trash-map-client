@@ -32,12 +32,6 @@ module.exports = {
     },
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-        ENDPOINT_BASE_URL: JSON.stringify(process.env.ENDPOINT_BASE_URL),
-      },
-    }),
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       template: './index.html',

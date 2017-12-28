@@ -1,21 +1,37 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { array, func, bool } from 'prop-types';
+
 import { TPSMarkerMap } from 'app/components';
+import { getGarbageBins } from 'app/actions/garbage-bin';
 
-const tps = [
-  { id: 1, latitude: -0.926737, longitude: 119.903979 },
-  { id: 2, latitude: -0.919705, longitude: 119.897713 },
-  { id: 3, latitude: -0.919115, longitude: 119.886855 },
-];
-
-export default class TPSCoordinatesMap extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { markers: tps };
+class TPSCoordinatesMap extends React.Component {
+  componentDidMount() {
+    if (!this.props.isGarbageBinFetched) {
+      this.props.getGarbageBins();
+    }
   }
 
   render() {
     return (
-      <TPSMarkerMap markers={this.state.markers} />
+      <TPSMarkerMap markers={this.props.garbageBins} />
     );
   }
 }
+
+TPSCoordinatesMap.propTypes = {
+  garbageBins: array.isRequired,
+  isGarbageBinFetched: bool.isRequired,
+  getGarbageBins: func.isRequired,
+};
+
+const mapStateToProps = state => ({
+  garbageBins: state.garbageBin.bins,
+  isGarbageBinFetched: state.garbageBin.fetched,
+});
+
+const mapDispatchToProps = ({
+  getGarbageBins,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TPSCoordinatesMap);

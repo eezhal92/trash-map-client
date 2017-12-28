@@ -34,6 +34,7 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
+        ENDPOINT_BASE_URL: JSON.stringify(process.env.ENDPOINT_BASE_URL),
       },
     }),
   ],

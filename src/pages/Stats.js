@@ -10,6 +10,7 @@ const Stats = ({ match }) => (
   <div class="stats-page" style={{ paddingTop: 62 }}>
     <Header title="Statistik &amp; Visualisasi Data" />
     <Tabs defaultActiveKey={1}>
+      <Link class="tabs__item" activeClassName="tabs__item--active" exact to="/stats">Overview</Link>
       <Link class="tabs__item" activeClassName="tabs__item--active" to="/stats/trash">Persebaran Sampah</Link>
       <Link class="tabs__item" activeClassName="tabs__item--active" to="/stats/tps">TPS</Link>
     </Tabs>

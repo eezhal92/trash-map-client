@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 
 app.use(express.static('dist'));
+
 app.use('*', (req, res) => {
   res.sendFile(resolve(__dirname, 'dist/index.html'));
 });

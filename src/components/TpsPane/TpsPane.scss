@@ -1,0 +1,21 @@
+.tps-pane {
+  padding: 20px;
+  height: 360px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+  @media(min-width: 768px) {
+    left: 0;
+    bottom: 0;
+    top: 62px;
+    right: unset;
+    height: 100vh;
+    width: 340px;
+  }
+}

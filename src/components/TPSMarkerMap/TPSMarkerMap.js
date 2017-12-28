@@ -1,33 +1,73 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { compose, withProps, withHandlers } from 'recompose';
 import { array, func } from 'prop-types';
 import {
-  withGoogleMap,
-  GoogleMap,
   Marker,
+  GoogleMap,
+  withGoogleMap,
 } from 'react-google-maps';
 import { MarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerClusterer';
 
-const TPSMarkerMap = props => (
-  <GoogleMap
-    defaultZoom={13}
-    defaultCenter={{ lat: -0.907251, lng: 119.868118 }}
-  >
-    <MarkerClusterer
-      onClick={props.onMarkerClustererClick}
-      averageCenter
-      enableRetinaIcons
-      gridSize={60}
-    >
-      {props.markers.map(marker => (
-        <Marker
-          key={marker.id}
-          position={{ lat: marker.latitude, lng: marker.longitude }}
-        />
-      ))}
-    </MarkerClusterer>
-  </GoogleMap>
-);
+import { TpsPane } from '../index';
+
+class TPSMarkerMap extends React.Component {
+  state = {
+    selectedTps: null,
+  };
+
+  setSelectedTps = (tps) => {
+    this.setState({ selectedTps: tps });
+  };
+
+  closeModal = () => {
+    this.setState({ selectedTps: null });
+  };
+
+  render() {
+    const { onMarkerClustererClick, markers } = this.props;
+    const { selectedTps } = this.state;
+
+    return (
+      <div>
+        {(() => {
+          if (selectedTps) {
+            return (
+              <TpsPane
+                id={selectedTps._id}
+                name={selectedTps.name}
+                close={this.closeModal}
+              />
+            );
+          }
+
+          return null;
+        })()}
+        <GoogleMap
+          defaultZoom={13}
+          defaultCenter={{ lat: -0.907251, lng: 119.868118 }}
+        >
+          <MarkerClusterer
+            onClick={onMarkerClustererClick}
+            averageCenter
+            enableRetinaIcons
+            gridSize={60}
+          >
+            {markers.map(marker => (
+              <Marker
+                key={marker._id}
+                onClick={() => {
+                  this.setSelectedTps(marker);
+                }}
+                position={{ lat: marker.latitude, lng: marker.longitude }}
+              />
+            ))}
+          </MarkerClusterer>
+        </GoogleMap>
+      </div>
+    );
+  }
+}
 
 TPSMarkerMap.propTypes = {
   markers: array.isRequired,

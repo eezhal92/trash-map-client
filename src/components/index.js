@@ -5,3 +5,4 @@ export { default as ImageCard } from './ImageCard';
 export { default as TrashHeatMap } from './TrashHeatMap';
 export { default as TPSMarkerMap } from './TPSMarkerMap';
 export { default as Tabs, Tab } from './Tabs';
+export { default as TpsPane } from './TpsPane';
