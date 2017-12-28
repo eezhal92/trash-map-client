@@ -1,41 +1,71 @@
 import React from 'react';
+import io from 'socket.io-client'; // eslint-disable-line
 import PropTypes from 'prop-types';
 
 import './TpsPane.scss';
 
-const TpsPane = ({
-  id,
-  name,
-  close,
-}) => (
-  <div class="tps-pane" id={id}>
-    <div>
-      <button class="btn btn-xs btn-default pull-right" onClick={close}>Tutup</button>
-    </div>
-    <br />
-    <h3>{name}</h3>
-    <br />
-    <div class="row">
-      <div class="col-xs-4">
-        <p style={{ color: '#676767' }}>Ketinggian</p>
-        <span style={{ fontSize: 20 }}>200 </span><span>cm</span>
-      </div>
-      <div class="col-xs-4">
-        <p style={{ color: '#676767' }}>Suhu</p>
-        <span style={{ fontSize: 20 }}>18 </span><span>celcius</span>
-      </div>
-      <div class="col-xs-4">
-        <p style={{ color: '#676767' }}>Kelembapan</p>
-        <span style={{ fontSize: 20 }}>3</span><span>%</span>
-      </div>
-      <div class="col-xs-12">
-        <div style={{ padding: '24px 0' }}>
-          <button class="btn btn--ios btn--outline">Lihat Log</button>
+class TpsPane extends React.Component {
+  state = {
+    temperature: 0,
+    elevation: 0,
+    humidity: 0,
+  };
+
+  componentDidMount() {
+    this.socket = io('http://localhost:3000');
+
+    this.socket.on('garbage-bin-log:added', ({ temperature, elevation, humidity }) => {
+      this.setState({ temperature, elevation, humidity });
+    });
+  }
+
+  componentWillUnmount() {
+    this.socket.close();
+  }
+
+  render() {
+    const {
+      id,
+      name,
+      close,
+    } = this.props;
+    const {
+      temperature,
+      humidity,
+      elevation,
+    } = this.state;
+
+    return (
+      <div class="tps-pane" id={id}>
+        <div>
+          <button class="btn btn-xs btn-default pull-right" onClick={close}>Tutup</button>
+        </div>
+        <br />
+        <h3>{name}</h3>
+        <br />
+        <div class="row">
+          <div class="col-xs-4">
+            <p style={{ color: '#676767' }}>Ketinggian</p>
+            <span style={{ fontSize: 20 }}>{elevation} </span><span>cm</span>
+          </div>
+          <div class="col-xs-4">
+            <p style={{ color: '#676767' }}>Suhu</p>
+            <span style={{ fontSize: 20 }}>{temperature} </span><span>celcius</span>
+          </div>
+          <div class="col-xs-4">
+            <p style={{ color: '#676767' }}>Kelembapan</p>
+            <span style={{ fontSize: 20 }}>{humidity}</span><span>%</span>
+          </div>
+          <div class="col-xs-12">
+            <div style={{ padding: '24px 0' }}>
+              <button class="btn btn--ios btn--outline">Lihat Log</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-);
+    );
+  }
+}
 
 TpsPane.propTypes = {
   id: PropTypes.string.isRequired,

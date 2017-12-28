@@ -9,11 +9,15 @@ import { Tabs, Header, Message } from '../components';
 const Stats = ({ match }) => (
   <div class="stats-page" style={{ paddingTop: 62 }}>
     <Header title="Statistik &amp; Visualisasi Data" />
-    <Tabs defaultActiveKey={1}>
-      <Link class="tabs__item" activeClassName="tabs__item--active" exact to="/stats">Overview</Link>
-      <Link class="tabs__item" activeClassName="tabs__item--active" to="/stats/trash">Persebaran Sampah</Link>
-      <Link class="tabs__item" activeClassName="tabs__item--active" to="/stats/tps">TPS</Link>
-    </Tabs>
+    <div style={{ background: '#fff' }}>
+      <div class="container">
+        <Tabs defaultActiveKey={1}>
+          <Link class="tabs__item" activeClassName="tabs__item--active" exact to="/stats">Overview</Link>
+          <Link class="tabs__item" activeClassName="tabs__item--active" to="/stats/trash">Persebaran Sampah</Link>
+          <Link class="tabs__item" activeClassName="tabs__item--active" to="/stats/tps">TPS</Link>
+        </Tabs>
+      </div>
+    </div>
     <Route
       exact
       path={match.url}
@@ -22,8 +26,8 @@ const Stats = ({ match }) => (
           <div class="row">
             <div class="col-xs-12">
               <Message
-                text="Statistic"
-                subText="Lorem ipsum"
+                text="Statistik"
+                subText="Akan datang..."
               />
             </div>
           </div>
