@@ -1,6 +1,7 @@
 import React from 'react';
-import io from 'socket.io-client'; // eslint-disable-line
+import io from 'socket.io-client';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './TpsPane.scss';
 
@@ -12,10 +13,12 @@ class TpsPane extends React.Component {
   };
 
   componentDidMount() {
-    this.socket = io('http://localhost:3000');
+    this.socket = io(process.env.ENDPOINT_BASE_URL);
 
-    this.socket.on('garbage-bin-log:added', ({ temperature, elevation, humidity }) => {
-      this.setState({ temperature, elevation, humidity });
+    this.socket.on('garbage-bin-log:added', ({ tpsId, temperature = 0, elevation = 0, humidity = 0 }) => {
+      if (tpsId === this.props.id) {
+        this.setState({ temperature, elevation, humidity });
+      }
     });
   }
 
@@ -58,7 +61,7 @@ class TpsPane extends React.Component {
           </div>
           <div class="col-xs-12">
             <div style={{ padding: '24px 0' }}>
-              <button class="btn btn--ios btn--outline">Lihat Log</button>
+              <Link to={`/tps/${id}`} className="btn btn--ios btn--outline">Lihat Log</Link>
             </div>
           </div>
         </div>

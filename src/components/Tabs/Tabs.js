@@ -37,16 +37,13 @@ class Tabs extends Component {
 
 Tabs.childContextTypes = {
   tab: PropTypes.shape({
-    activeKey: PropTypes.bool.isRequired,
+    activeKey: PropTypes.number.isRequired,
     updateKey: PropTypes.func.isRequired,
   }),
 };
 
 Tabs.propTypes = {
-  children: PropTypes.oneOf([
-    PropTypes.reactElement,
-    PropTypes.element,
-  ]).isRequired,
+  children: PropTypes.any.isRequired,
   defaultActiveKey: PropTypes.number.isRequired,
 };
 
@@ -68,10 +65,7 @@ export const Tab = ({ children, id, eventKey }, context) => {
 };
 
 Tab.propTypes = {
-  children: PropTypes.oneOf([
-    PropTypes.reactElement,
-    PropTypes.element,
-  ]).isRequired,
+  children: PropTypes.element.isRequired,
   eventKey: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
 };

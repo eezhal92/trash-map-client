@@ -7,7 +7,7 @@ const TrashStats = () => (
       <div class="col-xs-12">
         <Message
           text="Statistik"
-          subText="Akan datang..."
+          subText="Dalam tahap pengembangan..."
         />
       </div>
     </div>
